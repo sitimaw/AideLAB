@@ -10,5 +10,7 @@ class Praktikan extends Model
     use HasFactory;
 
     protected $table = 'Praktikan';
+    protected $primaryKey = 'npm';
+    public $incrementing = false;
     protected $fillable = ['npm', 'nama'];
 }
