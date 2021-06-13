@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePraktikumTable extends Migration
+class CreatePersentaseNilaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreatePraktikumTable extends Migration
      */
     public function up()
     {
-        Schema::create('praktikum', function (Blueprint $table) {
+        Schema::create('persentase_nilai', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_matakuliah')->constrained('matakuliah');
-            $table->foreignId('id_jadwal')->constrained('jadwal');
-            $table->text('aturan');
-            $table->timestamps();
+            $table->foreignId('id_praktikum')->constrained('praktikum');
+            $table->integer('absen');
+            $table->integer('tugas');
+            $table->integer('uts');
+            $table->integer('uas');
         });
     }
 
@@ -29,6 +30,6 @@ class CreatePraktikumTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('praktikum');
+        Schema::dropIfExists('persentase_nilai');
     }
 }
