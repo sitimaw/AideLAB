@@ -83,7 +83,7 @@ return [
 
         'dosen' => [
             'driver' => 'eloquent',
-            'model' => App\Dosen::class,
+            'model' => App\Models\Dosen::class,
         ],
 
         'aslab' => [
