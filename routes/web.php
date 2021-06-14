@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/login/{url}', 'Auth\LoginController@showLoginForm')->name('login.show');
 Route::post('/login/dosen', 'Auth\LoginController@dosenLogin')->name('login.dosen');
 Route::post('/login/aslab', 'Auth\LoginController@aslabLogin')->name('login.aslab');
+Route::post('/register', 'Auth\RegisterController@create')->name('register.create');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dosen', 'DosenController@index')->name('dosen');

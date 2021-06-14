@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -40,6 +41,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:aslab');
     }
 
     /**
@@ -51,8 +53,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            // 'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'npm' => ['required', 'string', 'size:13', 'unique:aslab,npm'],
+            'nama' => ['required', 'string'],
+            'no_hp' => ['required', 'digits_between:11,13'], 
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:aslab,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -63,18 +67,23 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
+        $this->validator($request->all())->validate();
         Aslab::create([
-            'npm' => $data['npm'],
-            'nama' => $data['nama'],
-            'no_hp' => $data['no_hp'],
+            'npm' => $request['npm'],
+            'nama' => $request['nama'],
+            'no_hp' => $request['no_hp'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
         ]);
 
-        return User::create([
-            'name' => $data['npm'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return redirect()->intended('login/aslab');
+    }
+
+    protected function registered()
+    {
+        $this->guard()->logout();
+        return back();
     }
 }
