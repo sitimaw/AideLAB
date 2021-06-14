@@ -46,6 +46,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'dosen' => [
+            'driver' => 'session',
+            'provider' => 'dosen',
+        ],
+
+        'aslab' => [
+            'driver' => 'session',
+            'provider' => 'aslab',
+        ],
     ],
 
     /*
@@ -69,6 +79,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'dosen' => [
+            'driver' => 'eloquent',
+            'model' => App\Dosen::class,
+        ],
+
+        'aslab' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Aslab::class,
         ],
 
         // 'users' => [
