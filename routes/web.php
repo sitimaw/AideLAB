@@ -21,5 +21,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/login/{url}', 'Auth\LoginController@showLoginForm')->name('login.show');
+Route::post('/login/dosen', 'Auth\LoginController@dosenLogin')->name('login.dosen');
+Route::post('/login/aslab', 'Auth\LoginController@aslabLogin')->name('login.aslab');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dosen', 'DosenController@index')->name('dosen');
+Route::get('/aslab', 'AslabController@index')->name('aslab');

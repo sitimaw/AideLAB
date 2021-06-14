@@ -8,16 +8,18 @@
                 <div class="card-header">{{ __('Login') }} {{ ucwords($url) }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login.' . $url) }}">
                         @csrf
-
+                        @php
+                            $id = $url=='aslab'? 'npm' : 'nip';
+                        @endphp
                         <div class="form-group row">
-                            <label for="npm" class="col-md-4 col-form-label text-md-right">{{ __($url=='aslab' ? 'NPM' : 'NIP') }}</label>
+                            <label for="{{ $id }}" class="col-md-4 col-form-label text-md-right">{{ __($url=='aslab' ? 'NPM' : 'NIP') }}</label>
 
                             <div class="col-md-6">
-                                <input id="npm" type="text" class="form-control @error('npm') is-invalid @enderror" name="npm" value="{{ old('npm') }}" required autocomplete="npm" autofocus>
+                                <input id="{{ $id }}" type="text" class="form-control @error($id) is-invalid @enderror" name="{{ $id }}" value="{{ old($id) }}" required autocomplete="{{ $id }}" autofocus>
 
-                                @error('npm')
+                                @error($id)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

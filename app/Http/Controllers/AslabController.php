@@ -14,7 +14,7 @@ class AslabController extends Controller
      */
     public function index()
     {
-        //
+        return view('aslab.index');
     }
 
     /**
