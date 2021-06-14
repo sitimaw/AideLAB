@@ -55,7 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'npm' => ['required', 'string', 'size:13', 'unique:aslab,npm'],
             'nama' => ['required', 'string'],
-            'no_hp' => ['required', 'digits_between:11,13'], 
+            'no_hp' => ['required', 'digits_between:10,15'], 
             'email' => ['required', 'string', 'email', 'max:255', 'unique:aslab,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

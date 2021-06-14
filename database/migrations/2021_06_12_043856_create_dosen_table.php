@@ -15,10 +15,10 @@ class CreateDosenTable extends Migration
     {
         Schema::create('dosen', function (Blueprint $table) {
             $table->string('nip', 18)->primary(); //primary key
-            $table->string('password');
             $table->string('nama');
             $table->string('no_hp', 15);
             $table->string('email');
+            $table->string('password');
             $table->string('path_foto')->nullable();
             $table->timestamps();
         });
