@@ -20,10 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/login/{url}', 'Auth\LoginController@showLoginForm')->name('login.show');
-Route::post('/login/dosen', 'Auth\LoginController@dosenLogin')->name('login.dosen');
-Route::post('/login/aslab', 'Auth\LoginController@aslabLogin')->name('login.aslab');
+Route::middleware(['guest:aslab', 'guest:dosen'])->group(function () {
+    Route::get('/login/{url}', 'Auth\LoginController@showLoginForm')->name('login.show');
+    Route::post('/login/dosen', 'Auth\LoginController@dosenLogin')->name('login.dosen');
+    Route::post('/login/aslab', 'Auth\LoginController@aslabLogin')->name('login.aslab');
+    Route::post('/register', 'Auth\RegisterController@create')->name('register.create');
+});
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dosen', 'DosenController@index')->name('dosen');
-Route::get('/aslab', 'AslabController@index')->name('aslab');
+Route::get('/dosen', 'DosenController@index')->name('dosen')->middleware('auth:dosen');
+Route::get('/aslab', 'AslabController@index')->name('aslab')->middleware('auth:aslab');
