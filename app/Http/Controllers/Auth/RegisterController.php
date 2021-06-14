@@ -78,12 +78,6 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->intended('login/aslab');
-    }
-
-    protected function registered()
-    {
-        $this->guard()->logout();
-        return back();
+        return redirect()->route('login.show', ['url' => 'aslab'])->with('berhasil', "Registrasi berhasil!");
     }
 }
