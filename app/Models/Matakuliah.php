@@ -16,4 +16,9 @@ class Matakuliah extends Model
     {
         return $this->belongsToMany(Aslab::class, 'aslab_matakuliah', 'id_matakuliah', 'npm');
     }
+
+    public function dosen()
+    {
+        return $this->belongsToMany(Dosen::class, 'dosen_matakuliah', 'id_matakuliah', 'nip');
+    }
 }
