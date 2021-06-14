@@ -61,7 +61,7 @@ class LoginController extends Controller
 
             return redirect()->intended('/dosen');
         }
-        return back()->withInput($request->only('nip'));
+        return back()->with('gagal', "NIP atau password yang Anda masukkan salah!")->withInput($request->only('nip'));
     }
 
     public function aslabLogin(Request $request)
@@ -74,6 +74,6 @@ class LoginController extends Controller
         if (Auth::guard('aslab')->attempt(['npm' => $request->npm, 'password' => $request->password])) {
             return redirect()->intended('/aslab');
         }
-        return back()->withInput($request->only('npm'));
+        return back()->with('gagal', "NPM atau password yang Anda masukkan salah!")->withInput($request->only('npm'));
     }
 }
