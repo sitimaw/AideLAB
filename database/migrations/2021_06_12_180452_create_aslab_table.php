@@ -19,7 +19,7 @@ class CreateAslabTable extends Migration
             $table->string('nama');
             $table->string('no_hp', 15);
             $table->string('email');
-            $table->string('path_foto');
+            $table->string('path_foto')->nullable();
             $table->timestamps();
         });
     }
