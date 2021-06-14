@@ -14,15 +14,19 @@
                     </div>
                     @endif
 
-                    <h5 class="display-5">Daftar Matakuliah</h5>
+                    <h5 class="display-5">Daftar Aslab</h5>
                     <ul class="list-group">
-                        @foreach (Auth::guard('dosen')->user()->matakuliah as $mk)
+                        @foreach ($matakuliah->aslab as $al)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $mk->nama . ' ' . $mk->kelas }}
-                            <a href="{{ route('dosen.show', $mk) }}" class="badge badge-primary badge-pill">Buka</a>
+                            {{ $al->nama }}
+                            <a href="#" class="badge badge-primary badge-pill">Pilih</a>
                         </li>
                         @endforeach
                     </ul>
+                </div>
+
+                <div class="card-footer">
+                    <button onclick="#" type="button" class="btn btn-primary">Kembali</button>
                 </div>
             </div>
         </div>

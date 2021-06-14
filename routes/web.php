@@ -29,3 +29,5 @@ Route::middleware(['guest:aslab', 'guest:dosen'])->group(function () {
 
 Route::get('/dosen', 'DosenController@index')->name('dosen')->middleware('auth:dosen');
 Route::get('/aslab', 'AslabController@index')->name('aslab')->middleware('auth:aslab');
+
+Route::get('/dosen/{matakuliah}', 'DosenController@show')->name('dosen.show')->middleware('auth:dosen');
