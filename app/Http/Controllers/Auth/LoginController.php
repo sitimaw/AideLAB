@@ -39,6 +39,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:dosen')->except('logout');
+        $this->middleware('guest:aslab')->except('logout');
     }
 
     public function showLoginForm($url = 'aslab')
@@ -61,5 +62,18 @@ class LoginController extends Controller
             return redirect()->intended('/dosen');
         }
         return back()->withInput($request->only('nip'));
+    }
+
+    public function aslabLogin(Request $request)
+    {
+        $this->validate($request, [
+            'npm' => 'required',
+            'password' => 'required',
+        ]);
+
+        if (Auth::guard('aslab')->attempt(['npm' => $request->npm, 'password' => $request->password])) {
+            return redirect()->intended('/aslab');
+        }
+        return back()->withInput($request->only('npm'));
     }
 }
