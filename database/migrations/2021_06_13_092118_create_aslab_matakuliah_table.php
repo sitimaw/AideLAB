@@ -16,7 +16,7 @@ class CreateAslabMatakuliahTable extends Migration
         Schema::create('aslab_matakuliah', function (Blueprint $table) {
             $table->string('npm', 13)->constrained('aslab', 'npm');
             $table->foreignId('id_matakuliah')->constrained('matakuliah', 'id');
-            $table->boolean('status');
+            $table->boolean('status')->default(false);
             $table->primary(['npm', 'id_matakuliah']);
         });
     }

@@ -9,6 +9,11 @@ class Matakuliah extends Model
 {
     use HasFactory;
 
-    protected $table = 'dosen';
+    protected $table = 'matakuliah';
     protected $fillable = ['kd_mk', 'nama', 'kelas'];
+
+    public function aslab()
+    {
+        return $this->belongsToMany(Aslab::class, 'aslab_matakuliah', 'id_matakuliah', 'npm');
+    }
 }
