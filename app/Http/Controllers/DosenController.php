@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
+use App\Models\Matakuliah;
 use Illuminate\Http\Request;
 
 class DosenController extends Controller
@@ -44,9 +45,9 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Dosen $dosen)
+    public function show(Matakuliah $matakuliah)
     {
-        //
+        return view('dosen.show', compact('matakuliah'));
     }
 
     /**

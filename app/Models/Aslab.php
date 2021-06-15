@@ -20,4 +20,9 @@ class Aslab extends Authenticatable
     protected $table = 'aslab';
     protected $primaryKey = 'npm';
     public $incrementing = false;
+
+    public function matakuliah()
+    {
+        return $this->belongsToMany(Matakuliah::class, 'aslab_matakuliah', 'npm', 'id_matakuliah');
+    }
 }

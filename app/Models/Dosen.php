@@ -20,4 +20,9 @@ class Dosen extends Authenticatable
     protected $table = 'dosen';
     protected $primaryKey = 'nip';
     public $incrementing = false;
+
+    public function matakuliah()
+    {
+        return $this->belongsToMany(Matakuliah::class, 'dosen_matakuliah', 'nip', 'id_matakuliah');
+    }
 }
