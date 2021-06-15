@@ -15,8 +15,9 @@ class CreateMateriTable extends Migration
     {
         Schema::create('materi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_prak');
+            $table->foreignId('id_praktikum');
             $table->string('judul');
+            $table->string('slug');
             $table->string('nama_file', 255);
             $table->string('path_file', 255);
             $table->integer('ukuran_file');

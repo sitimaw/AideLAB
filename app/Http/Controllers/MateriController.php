@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matakuliah;
 use App\Models\Materi;
+use App\Models\Matakuliah;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class MateriController extends Controller
@@ -15,8 +16,8 @@ class MateriController extends Controller
      */
     public function index(Matakuliah $matakuliah)
     {
-        $materi = $matakuliah->praktikum->materi();
-        return view('dosen.materi', compact('matakuliah'));
+        $materi = $matakuliah->praktikum->materi;
+        return view('dosen.materi', compact('matakuliah', 'materi'));
     }
 
     /**
@@ -37,7 +38,26 @@ class MateriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file_materi = $request->file('file');
+        $extension_file = $file_materi->extension();
+        $ukuran_file = $file_materi->getSize() / 1024;
+
+        $str_random = Str::random(5);
+        $nama_file = str_replace(' ', '_', $request->judul) . "-$str_random.$extension_file";
+        $slug = Str::slug($request->judul) . '-' . $str_random;
+
+        $data['id_praktikum'] = $request->id_praktikum;
+        $data['judul'] = $request->judul;
+        $data['slug'] = $slug;
+        $data['nama_file'] = $nama_file;
+        $data['ukuran_file'] = $ukuran_file;
+        $data['extension_file'] = $extension_file;
+        $data['path_file'] = $file_materi->storeAs('materi', $nama_file);
+
+        Materi::create($data);
+        session()->flash('success', "Materi <strong>$request->judul</strong> berhasil diupload!");
+
+        return back();
     }
 
     /**
@@ -46,7 +66,7 @@ class MateriController extends Controller
      * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\Response
      */
-    public function show(Materi $materi)
+    public function show(Matakuliah $matakuliah, Materi $materi)
     {
         //
     }
