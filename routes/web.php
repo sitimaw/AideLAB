@@ -30,9 +30,10 @@ Route::middleware(['guest:aslab', 'guest:dosen'])->group(function () {
 Route::middleware(['auth:dosen'])->group(function(){
     Route::get('/dosen', 'MatakuliahController@index')->name('dosen.matakuliah');
     Route::patch('/dosen/matakuliah/aslab', 'MatakuliahController@setStatusAslab')->name('matakuliah.statusAslab');
-    Route::get('/dosen/{matakuliah}', 'MatakuliahController@showAslab')->name('matakuliah.aslab');
+    Route::get('/dosen/{matakuliah:slug}', 'MatakuliahController@showAslab')->name('matakuliah.aslab');
+    Route::get('/dosen/{matakuliah:slug}/aslab', 'MatakuliahController@showAslabTerpilih')->name('matakuliah.aslabTerpilih');
+    Route::get('/dosen/{matakuliah:slug}/materi', 'MateriController@index')->name('matakuliah.materi');
 });
-
 
 Route::middleware(['auth:aslab'])->group(function(){
     Route::get('/aslab', 'PraktikumController@index')->name('aslab.praktikum');
