@@ -9,6 +9,7 @@ class Jadwal extends Model
 {
     use HasFactory;
 
-    protected $table = 'Jadwal';
+    protected $table = 'jadwal';
     protected $fillable = ['hari', 'jam', 'ruang', 'terisi'];
+    public $timestamps = false;
 }

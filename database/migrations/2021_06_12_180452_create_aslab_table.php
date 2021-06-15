@@ -17,7 +17,7 @@ class CreateAslabTable extends Migration
             $table->string('npm', 13)->primary(); //primary key
             $table->string('nama');
             $table->string('no_hp', 15);
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('path_foto')->nullable();
             $table->timestamps();

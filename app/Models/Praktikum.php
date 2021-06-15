@@ -11,4 +11,5 @@ class Praktikum extends Model
 
     protected $table = 'Praktikum';
     protected $fillable = ['id_mk', 'id_jadwal', 'aturan'];
+    public $timestamps = false;
 }

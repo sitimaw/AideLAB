@@ -11,6 +11,7 @@ class Matakuliah extends Model
 
     protected $table = 'matakuliah';
     protected $fillable = ['kd_mk', 'nama', 'kelas'];
+    public $timestamps = false;
 
     public function aslab()
     {
