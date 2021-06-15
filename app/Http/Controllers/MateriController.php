@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matakuliah;
 use App\Models\Materi;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,10 @@ class MateriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Matakuliah $matakuliah)
     {
-        //
+        $materi = $matakuliah->praktikum->materi();
+        return view('dosen.materi', compact('matakuliah'));
     }
 
     /**

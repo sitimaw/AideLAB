@@ -10,13 +10,19 @@ class Matakuliah extends Model
     use HasFactory;
 
     protected $table = 'matakuliah';
-    protected $fillable = ['kd_mk', 'nama', 'kelas'];
+    protected $fillable = ['kd_mk', 'nama', 'kelas', 'slug'];
     public $timestamps = false;
 
     public function aslab()
     {
         return $this->belongsToMany(Aslab::class, 'aslab_matakuliah', 'id_matakuliah', 'npm')
                     ->withPivot(['status']);
+    }
+    
+    public function aslabTerpilih()
+    {
+        return $this->belongsToMany(Aslab::class, 'aslab_matakuliah', 'id_matakuliah', 'npm')
+                    ->wherePivot('status', '=', 1);
     }
 
     public function dosen()
