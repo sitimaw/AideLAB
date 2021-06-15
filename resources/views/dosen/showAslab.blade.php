@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('parent-menu')
+<x-parent-menu nama='{{ "$matakuliah->kd_mk $matakuliah->kelas" }}' link='dosen.matakuliah'></x-parent-menu>
+@endsection
+
+@section('menu')
+<x-menu-dosen></x-menu-dosen>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
