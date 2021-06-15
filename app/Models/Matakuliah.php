@@ -23,4 +23,9 @@ class Matakuliah extends Model
     {
         return $this->belongsToMany(Dosen::class, 'dosen_matakuliah', 'id_matakuliah', 'nip');
     }
+
+    public function praktikum()
+    {
+        return $this->hasOne(Praktikum::class, 'id_matakuliah');
+    }
 }

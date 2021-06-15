@@ -12,4 +12,9 @@ class Jadwal extends Model
     protected $table = 'jadwal';
     protected $fillable = ['hari', 'jam', 'ruang', 'terisi'];
     public $timestamps = false;
+
+    public function praktikum()
+    {
+        return $this->hasOne(Praktikum::class, 'id_jadwal');
+    }
 }

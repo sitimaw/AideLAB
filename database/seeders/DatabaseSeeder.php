@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Praktikan;
+use App\Models\Praktikum;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DosenSeeder::class);
         $this->call(JadwalSeeder::class);
         $this->call(PraktikumSeeder::class);
+        $this->call(PraktikanSeeder::class);
     }
 }

@@ -11,4 +11,9 @@ class PersentaseNilai extends Model
 
     protected $table = 'persentase_nilai';
     protected $fillable = ['id_praktikum', 'absen', 'tugas', 'uts', 'uas'];
+
+    public function praktikum()
+    {
+        return $this->belongsTo(Praktikum::class, 'id_praktikum');
+    }
 }

@@ -11,4 +11,9 @@ class Materi extends Model
 
     protected $table = 'Jadwal';
     protected $fillable = ['id_prak', 'judul', 'nama_file', 'path_file', 'ukuran_file', 'extension_file'];
+
+    public function praktikum()
+    {
+        return $this->belongsTo(Praktikum::class, 'id_praktikum');
+    }
 }
