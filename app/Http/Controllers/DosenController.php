@@ -15,7 +15,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        return view('dosen.index');
+        
     }
 
     /**
@@ -45,9 +45,9 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Matakuliah $matakuliah)
+    public function show(Dosen $dosen)
     {
-        return view('dosen.show', compact('matakuliah'));
+        //
     }
 
     /**
