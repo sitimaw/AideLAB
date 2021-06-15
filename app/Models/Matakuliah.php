@@ -14,7 +14,8 @@ class Matakuliah extends Model
 
     public function aslab()
     {
-        return $this->belongsToMany(Aslab::class, 'aslab_matakuliah', 'id_matakuliah', 'npm');
+        return $this->belongsToMany(Aslab::class, 'aslab_matakuliah', 'id_matakuliah', 'npm')
+                    ->withPivot(['status']);
     }
 
     public function dosen()

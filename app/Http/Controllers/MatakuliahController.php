@@ -14,7 +14,22 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
-        //
+        return view('dosen.matakuliah');
+    }
+
+    public function showAslab(Matakuliah $matakuliah)
+    {
+        return view('dosen.showAslab', compact('matakuliah'));
+    }
+
+    public function setStatusAslab(Request $request)
+    {
+        $matakuliah = Matakuliah::find($request->matakuliah);
+        $matakuliah->aslab()->updateExistingPivot($request->aslab, [
+            'status' => $request->status,
+        ]);
+
+        return back();
     }
 
     /**

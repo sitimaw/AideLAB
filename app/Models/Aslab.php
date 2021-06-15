@@ -23,6 +23,7 @@ class Aslab extends Authenticatable
 
     public function matakuliah()
     {
-        return $this->belongsToMany(Matakuliah::class, 'aslab_matakuliah', 'npm', 'id_matakuliah');
+        return $this->belongsToMany(Matakuliah::class, 'aslab_matakuliah', 'npm', 'id_matakuliah')
+                    ->withPivot(['status']);
     }
 }

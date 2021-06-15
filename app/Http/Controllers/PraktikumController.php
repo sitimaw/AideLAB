@@ -14,7 +14,7 @@ class PraktikumController extends Controller
      */
     public function index()
     {
-        //
+        return view('aslab.praktikum');
     }
 
     /**
