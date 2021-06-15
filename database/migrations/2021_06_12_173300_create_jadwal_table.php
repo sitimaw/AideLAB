@@ -16,10 +16,10 @@ class CreateJadwalTable extends Migration
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
             $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat']);
-            $table->time('jam');
+            $table->time('jam_mulai');
+            $table->time('jam_akhir');
             $table->string('ruang');
-            $table->boolean('terisi');
-            $table->timestamps();
+            $table->boolean('status'); // true terisi, false kosong 
         });
     }
 

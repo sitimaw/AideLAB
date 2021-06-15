@@ -14,12 +14,12 @@ class CreatePraktikanPraktikumTable extends Migration
     public function up()
     {
         Schema::create('praktikan_praktikum', function (Blueprint $table) {
-            $table->string('npm', 18)->constrained('praktikan', 'npm');
+            $table->string('npm', 13)->constrained('praktikan', 'npm');
             $table->foreignId('id_praktikum')->constrained('praktikum', 'id');
-            $table->json('nilai_absen');
-            $table->json('nilai_tugas');
-            $table->integer('nilai_uts');
-            $table->integer('nilai_uas');
+            $table->json('nilai_absen')->nullable();
+            $table->json('nilai_tugas')->nullable();
+            $table->integer('nilai_uts')->nullable();
+            $table->integer('nilai_uas')->nullable();
             $table->primary(['npm', 'id_praktikum']);
         });
     }

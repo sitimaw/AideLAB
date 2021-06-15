@@ -11,6 +11,7 @@ class Matakuliah extends Model
 
     protected $table = 'matakuliah';
     protected $fillable = ['kd_mk', 'nama', 'kelas'];
+    public $timestamps = false;
 
     public function aslab()
     {
@@ -21,5 +22,10 @@ class Matakuliah extends Model
     public function dosen()
     {
         return $this->belongsToMany(Dosen::class, 'dosen_matakuliah', 'id_matakuliah', 'nip');
+    }
+
+    public function praktikum()
+    {
+        return $this->hasOne(Praktikum::class, 'id_matakuliah');
     }
 }

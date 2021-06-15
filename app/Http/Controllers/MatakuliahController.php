@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matakuliah;
+use App\Models\Praktikum;
 use Illuminate\Http\Request;
 
 class MatakuliahController extends Controller
@@ -28,6 +29,14 @@ class MatakuliahController extends Controller
         $matakuliah->aslab()->updateExistingPivot($request->aslab, [
             'status' => $request->status,
         ]);
+       
+        $praktikum = $matakuliah->praktikum;
+ 
+        if($request->status == 1) {
+            $praktikum->aslab()->attach($request->aslab);
+        } else {
+            $praktikum->aslab()->detach($request->aslab);
+        }
 
         return back();
     }

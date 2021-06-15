@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('parent-menu')
+<x-parent-menu nama="{{ config('app.name', 'AideLAB') }}" link='/'></x-parent-menu>
+@endsection
+
+@section('menu')
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item active px-2 py-2">
+        <a class="nav-link" style="letter-spacing: 2px">DAFTAR MATAKULIAH<span class="sr-only">(current)</span></a>
+    </li>
+</ul>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
