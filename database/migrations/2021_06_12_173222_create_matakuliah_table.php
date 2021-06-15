@@ -18,7 +18,6 @@ class CreateMatakuliahTable extends Migration
             $table->char('kd_mk', 6);
             $table->string('nama');
             $table->char('kelas', 1);
-            $table->timestamps();
         });
     }
 

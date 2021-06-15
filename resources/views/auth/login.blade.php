@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('parent-menu')
+<x-parent-menu nama="{{ config('app.name', 'AideLAB') }}" link='/'></x-parent-menu>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

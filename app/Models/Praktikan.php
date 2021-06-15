@@ -13,4 +13,10 @@ class Praktikan extends Model
     protected $primaryKey = 'npm';
     public $incrementing = false;
     protected $fillable = ['npm', 'nama'];
+
+    public function praktikum()
+    {
+        return $this->belongsToMany(Praktikum::class, 'praktikan_praktikum', 'npm', 'id_praktikum')
+                    ->withPivot(['nilai_absen', 'nilai_tugas', 'nilai_uts', 'nilai_uas']);
+    }
 }

@@ -15,10 +15,9 @@ class CreatePraktikumTable extends Migration
     {
         Schema::create('praktikum', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_matakuliah')->constrained('matakuliah');
-            $table->foreignId('id_jadwal')->constrained('jadwal');
-            $table->text('aturan');
-            $table->timestamps();
+            $table->foreignId('id_matakuliah')->unique()->constrained('matakuliah');
+            $table->foreignId('id_jadwal')->unique()->constrained('jadwal');
+            $table->text('aturan')->nullable();
         });
     }
 
