@@ -6,6 +6,7 @@ use App\Models\Materi;
 use App\Models\Matakuliah;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MateriController extends Controller
 {
@@ -104,5 +105,11 @@ class MateriController extends Controller
     public function destroy(Materi $materi)
     {
         //
+    }
+
+    public function download(Matakuliah $matakuliah ,$slug)
+    {
+        $materi = Materi::where('slug', $slug)->first();
+        return Storage::download($materi->path_file);
     }
 }
