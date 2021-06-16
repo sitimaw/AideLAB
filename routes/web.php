@@ -29,6 +29,10 @@ Route::middleware(['guest:aslab', 'guest:dosen'])->group(function () {
 
 Route::prefix('aslab')->middleware(['auth:aslab'])->group(function(){
     Route::get('/praktikum', 'PraktikumController@index')->name('aslab.praktikum');
+    Route::get('/{matakuliah:slug}', 'PraktikumController@materi')->name('praktikum.materi');
+    Route::get('/{matakuliah:slug}/kontrak', 'PraktikumController@kontrak')->name('praktikum.kontrak');
+    Route::get('/{matakuliah:slug}/nilai', 'PraktikumController@nilai')->name('praktikum.nilai');
+    Route::get('/{matakuliah:slug}/jadwal', 'PraktikumController@jadwal')->name('praktikum.jadwal');
 });
 
 Route::prefix('dosen')->middleware(['auth:dosen'])->group(function(){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matakuliah;
 use App\Models\Praktikum;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,20 @@ class PraktikumController extends Controller
      */
     public function index()
     {
+        session()->forget('slug_praktikum');
+        session()->forget('bc3');
         return view('aslab.praktikum');
+    }
+
+    public function materi(Matakuliah $matakuliah)
+    {
+        session(['slug_matakuliah' => $matakuliah->slug]);
+        session(['bc3' => [
+            'nama' => "$matakuliah->nama $matakuliah->kelas",
+            'route' => 'praktikum.materi',
+            'param' =>  $matakuliah->slug
+        ]]);
+        return view('aslab.materi', compact('matakuliah'));
     }
 
     /**

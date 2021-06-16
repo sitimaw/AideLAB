@@ -12,6 +12,10 @@
 </ul>
 @endsection
 
+@section('breadcrumb')
+<x-breadcrumb></x-breadcrumb>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -26,7 +30,16 @@
                     </div>
                     @endif
 
-                    {{ __('Hai Aslab!') }}
+                    <h5 class="display-5">Daftar Praktikum</h5>
+                    <ul class="list-group">
+                        @foreach (Auth::guard('aslab')->user()->praktikum as $p)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $p->matakuliah->nama . ' ' . $p->matakuliah->kelas }}
+                            <a href="{{ route('praktikum.materi', $p->matakuliah->slug) }}"
+                                class="badge badge-primary badge-pill">Buka</a>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
