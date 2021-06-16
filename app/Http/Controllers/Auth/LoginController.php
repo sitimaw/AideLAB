@@ -58,6 +58,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('dosen')->attempt(['nip' => $request->nip, 'password' => $request->password])) {
+            session(['bc1' => 'AideLAB']);
+            session( ['bc2' => ['nama' => 'Matakuliah', 
+                                    'route' => 'dosen.matakuliah']
+                    ]);
 
             return redirect()->intended('dosen/matakuliah');
         }

@@ -5,7 +5,11 @@
 @endsection
 
 @section('menu')
-<x-menu-dosen ></x-menu-dosen>
+<x-menu-dosen></x-menu-dosen>
+@endsection
+
+@section('breadcrumb')
+<x-breadcrumb></x-breadcrumb>
 @endsection
 
 @section('content')
