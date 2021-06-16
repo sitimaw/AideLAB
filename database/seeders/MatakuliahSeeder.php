@@ -31,7 +31,7 @@ class MatakuliahSeeder extends Seeder
                     'kd_mk' => $kd_mk,
                     'nama' => $nama,
                     'kelas' => $k,
-                    'slug' => Str::slug("$nama $k")
+                    'slug' => Str::slug("$kd_mk $k")
                 ]);
             }
         }

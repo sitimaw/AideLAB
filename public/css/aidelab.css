@@ -19,6 +19,7 @@
 }
 
 .card-materi {
+    /* padding-top: 33%; */
     height: 300px;
     background-color: #E4D7D0 !important;
     border-width: thick;

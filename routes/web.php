@@ -42,6 +42,9 @@ Route::prefix('dosen')->middleware(['auth:dosen'])->group(function(){
     Route::get('/{matakuliah:slug}', 'MatakuliahController@showAslab')->name('matakuliah.aslab');
     Route::get('/{matakuliah:slug}/aslab', 'MatakuliahController@showAslabTerpilih')->name('matakuliah.aslabTerpilih');
     Route::get('/{matakuliah:slug}/materi', 'MateriController@index')->name('matakuliah.materi');
-    Route::get('/{matakuliah:slug}/{materi}', 'MateriController@show')->name('matakuliah.materi.detail');
     Route::post('/{matakuliah:slug}/materi', 'MateriController@store')->name('matakuliah.materi.store');
+    Route::get('/{matakuliah:slug}/download/{slug}', 'MateriController@download')->name('matakuliah.materi.download');
+    Route::get('/{matakuliah:slug}/{slug}', 'MateriController@show')->name('matakuliah.materi.detail');
+    Route::patch('/{matakuliah:slug}/{slug}', 'MateriController@update')->name('matakuliah.materi.update');
+    Route::delete('/{matakuliah:slug}/{slug}', 'MateriController@destroy')->name('matakuliah.materi.delete');
 });
