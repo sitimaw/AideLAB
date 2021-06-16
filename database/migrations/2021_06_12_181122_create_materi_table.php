@@ -17,7 +17,7 @@ class CreateMateriTable extends Migration
             $table->id();
             $table->foreignId('id_praktikum');
             $table->string('judul');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('nama_file', 255);
             $table->string('path_file', 255);
             $table->integer('ukuran_file');
