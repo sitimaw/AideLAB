@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\Aslab;
 use App\Http\Controllers\Controller;
+use App\Models\Matakuliah;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
@@ -44,6 +45,12 @@ class RegisterController extends Controller
         $this->middleware('guest:aslab');
     }
 
+    public function showRegistrationForm()
+    {
+        $matakuliah = Matakuliah::all();
+        return view('auth.register', compact('matakuliah'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -70,14 +77,14 @@ class RegisterController extends Controller
     protected function create(Request $request)
     {
         $this->validator($request->all())->validate();
-        Aslab::create([
+        $aslab = Aslab::create([
             'npm' => $request['npm'],
             'nama' => $request['nama'],
             'no_hp' => $request['no_hp'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-
+        $aslab->matakuliah()->attach($request->praktikum);
         return redirect()->route('login.show', ['url' => 'aslab'])->with('berhasil', "Registrasi berhasil!");
     }
 }
