@@ -28,11 +28,13 @@ class MatakuliahController extends Controller
             'route' => 'matakuliah.aslab',
             'param' =>  $matakuliah->slug
         ]]);
+        session(['menu' => 'aslab']);
         return view('dosen.showAslab', compact('matakuliah'));
     }
     
     public function showAslabTerpilih(Matakuliah $matakuliah)
     {
+        session(['menu' => 'terpilih']);
         $aslab = $matakuliah->aslabTerpilih;
         return view('dosen.showAslabTerpilih', compact('matakuliah', 'aslab'));
     }
