@@ -31,6 +31,12 @@ class PraktikumController extends Controller
         return view('aslab.materi', compact('matakuliah'));
     }
 
+    public function kontrak(Matakuliah $matakuliah)
+    {
+        $praktikum = $matakuliah->praktikum;
+        return view('aslab.kontrak', compact('matakuliah', 'praktikum'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
