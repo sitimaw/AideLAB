@@ -11,7 +11,7 @@
         <a class="nav-link" href="{{ route('matakuliah.materi', session('slug_matakuliah')) }}">Materi<span
                 class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item {{ session('menu')=='roomchat' ? 'active' : '' }} px-2 py-2">
-        <a class="nav-link" href="#">Roomchat<span class="sr-only">(current)</span></a>
-    </li>
+    {{-- <li class="nav-item {{ session('menu')=='roomchat' ? 'active' : '' }} px-2 py-2">
+    <a class="nav-link" href="#">Roomchat<span class="sr-only">(current)</span></a>
+    </li> --}}
 </ul>

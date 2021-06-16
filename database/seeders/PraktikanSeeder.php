@@ -52,6 +52,17 @@ class PraktikanSeeder extends Seeder
             '2008107010101' => 'Hadafee Mudo'
         ];
 
+        $nilai = [
+            1 => '',
+            2 => '',
+            3 => '',
+            4 => '',
+            5 => '',
+            6 => '',
+            7 => '',
+            8 => '',
+        ];
+
         $counter=0;
         foreach ($praktikan as $npm => $nama) {
             $counter++;
@@ -63,14 +74,26 @@ class PraktikanSeeder extends Seeder
             if ($counter <= 12) {
                 for ($i=1; $i <= 15; $i+=3) { 
                     $p->praktikum()->attach($i);
+                    $p->praktikum()->updateExistingPivot($i, [
+                        'nilai_absen' => $nilai,
+                        'nilai_tugas' => $nilai,
+                    ]);
                 }
             } elseif ($counter <= 22) {
                 for ($i=2; $i <= 15; $i+=3) { 
                     $p->praktikum()->attach($i);
+                    $p->praktikum()->updateExistingPivot($i, [
+                        'nilai_absen' => $nilai,
+                        'nilai_tugas' => $nilai,
+                    ]);
                 }
             } else {
                 for ($i=3; $i <= 15; $i+=3) { 
                     $p->praktikum()->attach($i);
+                    $p->praktikum()->updateExistingPivot($i, [
+                        'nilai_absen' => $nilai,
+                        'nilai_tugas' => $nilai,
+                    ]);
                 }
             }
         }

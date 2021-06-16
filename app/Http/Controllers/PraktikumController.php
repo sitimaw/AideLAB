@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use App\Models\Matakuliah;
+use App\Models\Praktikan;
+use App\Models\PraktikanPraktikum;
 use App\Models\Praktikum;
 use Illuminate\Http\Request;
 
@@ -34,7 +36,7 @@ class PraktikumController extends Controller
         return view('aslab.kontrak', compact('matakuliah', 'praktikum'));
     }
 
-    public function aturan(Request $request)
+    public function kontrakAturan(Request $request)
     {
         $praktikum = Praktikum::find($request->id_praktikum);
         $praktikum->aturan = $request->aturan;
@@ -44,7 +46,7 @@ class PraktikumController extends Controller
         return back();
     }
 
-    public function jadwal(Request $request)
+    public function kontrakJadwal(Request $request)
     {
         $praktikum = Praktikum::find($request->id_praktikum);
         $jadwal = Jadwal::where([
@@ -73,7 +75,7 @@ class PraktikumController extends Controller
         return back();
     }
 
-    public function persen(Request $request)
+    public function kontrakPersen(Request $request)
     {
         $praktikum = Praktikum::find($request->id_praktikum);
         $validated = $request->validate([
@@ -97,6 +99,37 @@ class PraktikumController extends Controller
         }
 
         return back();
+    }
+
+    public function nilai(Matakuliah $matakuliah)
+    {
+        session(['menu' => 'nilai']);
+        $praktikum = $matakuliah->praktikum;
+
+        return view('aslab.nilai', compact('matakuliah', 'praktikum'));
+    }
+
+    public function updateNilai(Request $request)
+    {
+        $praktikan = Praktikan::find($request->npm);
+
+        $praktikan->praktikum()->updateExistingPivot($request->id_praktikum, [
+            'nilai_absen' => $request->nilai_absen,
+            'nilai_tugas' => $request->nilai_tugas,
+            'nilai_uts' => $request->nilai_uts,
+            'nilai_uas' => $request->nilai_uas,
+        ]);
+
+        return back();
+    }
+
+    public function jadwal(Matakuliah $matakuliah)
+    {
+        session(['menu' => 'jadwal']);
+        $praktikum = $matakuliah->praktikum;
+        $jadwal = Jadwal::where('status',1)->get();
+
+        return view('aslab.jadwal', compact('matakuliah', 'praktikum', 'jadwal'));
     }
 
     /**
