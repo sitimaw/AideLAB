@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('praktikum.persen', session('slug_matakuliah')) }}" method="post">
+            <form action="{{ route('kontrak.persen', session('slug_matakuliah')) }}" method="post">
                 @csrf
                 <div class="modal-body">
                     <input type="hidden" name="id_praktikum" value="{{ $praktikum }}">
