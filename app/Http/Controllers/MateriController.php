@@ -128,9 +128,15 @@ class MateriController extends Controller
      * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Materi $materi)
+    public function destroy(Matakuliah $matakuliah, $slug)
     {
-        //
+        $materi = Materi::where('slug', $slug)->first();
+        Storage::delete($materi->path_file);
+        $materi->delete();
+
+        session()->flash('success', "Materi <strong>$materi->judul</strong> berhasil dihapus!");
+
+        return redirect("dosen/$matakuliah->slug/materi");
     }
 
     public function download(Matakuliah $matakuliah ,$slug)

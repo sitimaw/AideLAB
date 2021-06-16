@@ -10,17 +10,18 @@
 
 @section('content')
 <div class="container">
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {!! session()->get('success') !!}
+        </div>
+    @endif
     <h1 style="color:#0A4158;">{{ $materi->judul }}</h1>
 
     <div class="d-flex justify-content-between mt-3">
         <div class="text-white">
             <a href="{{ route('matakuliah.materi.download', ['matakuliah' => session('slug_matakuliah'), 'slug' => $materi->slug]) }}" class="btn btn-success">download</a>
-            <a href="" class="btn btn-warning" data-toggle="modal" data-target="#modal-materi">edit</a>
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
-                delete
-            </button>
+            <a class="btn btn-warning" data-toggle="modal" data-target="#modal-materi">edit</a>
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">delete</a>
         </div>
         <div class="text-secondary float-right">
             Diupload {{ $materi->created_at->format('d M, Y') }}
@@ -83,5 +84,6 @@
             </div>
     @endswitch
     <x-modal-materi praktikum="{{ $matakuliah->praktikum->id }}" header="Edit Materi" tombol="Ubah" link="matakuliah.materi.update" :param="['matakuliah' => session('slug_matakuliah'), 'slug' => $materi->slug]" :judul="$materi->judul" edit="true"></x-modal-materi>    
+    <x-modal-confirm pesan="Apakah anda yakin ingin menghapus materi ini?" delete="true" :slug="$materi->slug"></x-modal-materi>    
 </div>
 @endsection

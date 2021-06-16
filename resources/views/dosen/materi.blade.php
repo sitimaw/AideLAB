@@ -10,6 +10,11 @@
 
 @section('content')
 <div class="container">
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {!! session()->get('success') !!}
+        </div>
+    @endif
     <div class="row">
         @foreach ($materi as $m)
             <div class="col-md-3">

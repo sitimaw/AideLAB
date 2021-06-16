@@ -41,4 +41,5 @@ Route::prefix('dosen')->middleware(['auth:dosen'])->group(function(){
     Route::get('/{matakuliah:slug}/download/{slug}', 'MateriController@download')->name('matakuliah.materi.download');
     Route::get('/{matakuliah:slug}/{slug}', 'MateriController@show')->name('matakuliah.materi.detail');
     Route::patch('/{matakuliah:slug}/{slug}', 'MateriController@update')->name('matakuliah.materi.update');
+    Route::delete('/{matakuliah:slug}/{slug}', 'MateriController@destroy')->name('matakuliah.materi.delete');
 });
