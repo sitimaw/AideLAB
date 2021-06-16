@@ -8,15 +8,15 @@
                 </button>
             </div>
             <div class="modal-footer mt-3">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                @if ($delete == true)
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                @if ($status == "delete")
                     <form action="{{ route('matakuliah.materi.delete', ['matakuliah' => session('slug_matakuliah'), 'slug' => $slug]) }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                 @else
-                    <button type="button" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-primary">Ya</button>
                 @endif
             </div>
         </div>

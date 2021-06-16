@@ -4,21 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class modalConfirm extends Component
+class modalProfil extends Component
 {
-    public $pesan;
     public $status;
-    public $slug;
+    public $auth;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($pesan, $status, $slug="")
+    public function __construct($status, $auth)
     {
-        $this->pesan = $pesan;
         $this->status = $status;
-        $this->slug = $slug;
+        $this->auth = $auth;
     }
 
     /**
@@ -28,6 +26,6 @@ class modalConfirm extends Component
      */
     public function render()
     {
-        return view('components.modal-confirm');
+        return view('components.modal-profil');
     }
 }

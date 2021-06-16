@@ -14,55 +14,31 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @if (Auth::guard('dosen')->check())
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::guard('dosen')->user()->nama }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
+                    <li class="nav-item" style="cursor: pointer">
+                        <a class="nav-link" data-toggle="modal" data-target="#modal-auth">{{ Auth::guard('dosen')->user()->nama }}<span class="sr-only">(current)</span></a>
+                    </li>
+                    <x-modal-profil status="NIP" :auth="auth('dosen')->user()"></x-modal-profil>
                 @elseif(Auth::guard('aslab')->check())
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::guard('aslab')->user()->nama }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
+                    <li class="nav-item" style="cursor: pointer">
+                        <a class="nav-link" data-toggle="modal" data-target="#modal-auth">{{ Auth::guard('aslab')->user()->nama }}<span class="sr-only">(current)</span></a>
+                    </li>
+                    <x-modal-profil status="NPM" :auth="auth('aslab')->user()"></x-modal-profil>
                 @else
-                @if (Route::has('login'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login.show', ['url' => 'aslab']) }}">{{ __('Login') }}</a>
-                </li>
-                @endif
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login.show', ['url' => 'aslab']) }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
 
-                @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-                @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
                 @endif
             </ul>
         </div>
     </div>
 </nav>
+
+<x-modal-auth></x-modal-auth>
