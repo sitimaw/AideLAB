@@ -91,9 +91,35 @@ class MateriController extends Controller
      * @param  \App\Models\Materi  $materi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Materi $materi)
+    public function update(Request $request, Matakuliah $matakuliah, $slug)
     {
-        //
+        $materi = Materi::where('slug', $slug)->first();
+        $str_random = Str::random(5);
+        $slug = Str::slug($request->judul) . '-' . $str_random;
+        $data = $request->all();
+        
+        $data['slug'] = $slug;
+        $data['id_praktikum'] = $request->id_praktikum;
+        $data['judul'] = $request->judul;
+
+        if ($request->file('file')) {
+            Storage::delete($materi->path_file);
+            $file_materi = $request->file('file');
+            $extension_file = $file_materi->extension();
+            $ukuran_file = $file_materi->getSize() / 1024;
+            $nama_file = str_replace(' ', '_', $request->judul) . "-$str_random.$extension_file";
+
+            $data['nama_file'] = $nama_file;
+            $data['ukuran_file'] = $ukuran_file;
+            $data['extension_file'] = $extension_file;
+            $data['path_file'] = $file_materi->storeAs('materi', $nama_file);
+        }
+
+        $materi->update($data);
+
+        session()->flash('success', "Materi <strong>$materi->judul</strong> berhasil diupdate!");
+
+        return redirect("dosen/$matakuliah->slug/$materi->slug");
     }
 
     /**

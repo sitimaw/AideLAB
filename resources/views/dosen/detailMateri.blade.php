@@ -15,7 +15,7 @@
     <div class="d-flex justify-content-between mt-3">
         <div class="text-white">
             <a href="{{ route('matakuliah.materi.download', ['matakuliah' => session('slug_matakuliah'), 'slug' => $materi->slug]) }}" class="btn btn-success">download</a>
-            <a href="" class="btn btn-warning">edit</a>
+            <a href="" class="btn btn-warning" data-toggle="modal" data-target="#modal-materi">edit</a>
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
@@ -36,10 +36,10 @@
             <div class="d-flex float-right mb-3">
                 <div class="btn-group btn-group-toggle">
                     <label class="btn btn-secondary active">
-                      <input type="radio" name="options" id="option1" checked> {{ $materi->nama_file }}
+                      <input type="radio" name="detail" id="option1"> {{ $materi->nama_file }}
                     </label>
                     <label class="btn btn-secondary active">
-                      <input type="radio" name="options" id="option2"> {{ $materi->ukuran_file }} kb</div>
+                      <input type="radio" name="detail" id="option2"> {{ $materi->ukuran_file }} kb</div>
                     </label>
                 </div>
             </div>
@@ -72,15 +72,16 @@
                 @endswitch
             </div>
             <div class="d-flex justify-content-center mb-3">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle">
                     <label class="btn btn-secondary active">
-                      <input type="radio" name="options" id="option1" checked> {{ $materi->nama_file }}
+                      <input type="radio" name="detail" id="option1" checked> {{ $materi->nama_file }}
                     </label>
                     <label class="btn btn-secondary active">
-                      <input type="radio" name="options" id="option2"> {{ $materi->ukuran_file }} kb</div>
+                      <input type="radio" name="detail" id="option2"> {{ $materi->ukuran_file }} kb</div>
                     </label>
                 </div>
             </div>
     @endswitch
+    <x-modal-materi praktikum="{{ $matakuliah->praktikum->id }}" header="Edit Materi" tombol="Ubah" link="matakuliah.materi.update" :param="['matakuliah' => session('slug_matakuliah'), 'slug' => $materi->slug]" :judul="$materi->judul" edit="true"></x-modal-materi>    
 </div>
 @endsection

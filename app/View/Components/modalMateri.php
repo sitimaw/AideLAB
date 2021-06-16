@@ -12,12 +12,13 @@ class modalMateri extends Component
     public $judul; 
     public $link; 
     public $param; 
+    public $edit; 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($header, $tombol, $link, $param, $judul="", $praktikum="")
+    public function __construct($header, $tombol, $link, $param, $edit="", $judul="", $praktikum="")
     {
         $this->praktikum = $praktikum;
         $this->judul = $judul;
@@ -25,6 +26,7 @@ class modalMateri extends Component
         $this->tombol = $tombol;
         $this->link = $link;
         $this->param = $param;
+        $this->edit = $edit;
     }
 
     /**

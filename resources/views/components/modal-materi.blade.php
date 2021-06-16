@@ -9,6 +9,9 @@
             </div>
             <form action="{{ route($link, $param) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @if ($edit == true)
+                    @method('patch')
+                @endif
                 <div class="modal-body">
                         <input type="hidden" name="id_praktikum" value="{{ $praktikum }}">
                         <div class="form-group">
