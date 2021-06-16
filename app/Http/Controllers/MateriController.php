@@ -119,7 +119,7 @@ class MateriController extends Controller
 
         session()->flash('success', "Materi <strong>$materi->judul</strong> berhasil diupdate!");
 
-        return redirect("dosen/$matakuliah->slug/$materi->slug");
+        return redirect("materi/$matakuliah->slug/$materi->slug");
     }
 
     /**
@@ -136,7 +136,7 @@ class MateriController extends Controller
 
         session()->flash('success', "Materi <strong>$materi->judul</strong> berhasil dihapus!");
 
-        return redirect("dosen/$matakuliah->slug/materi");
+        return redirect("materi/$matakuliah->slug");
     }
 
     public function download(Matakuliah $matakuliah ,$slug)
