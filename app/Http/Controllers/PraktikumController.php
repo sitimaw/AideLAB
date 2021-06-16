@@ -21,7 +21,7 @@ class PraktikumController extends Controller
         return view('aslab.praktikum');
     }
 
-    public function materi(Matakuliah $matakuliah)
+    public function kontrak(Matakuliah $matakuliah)
     {
         session(['slug_matakuliah' => $matakuliah->slug]);
         session(['bc3' => [
@@ -29,11 +29,6 @@ class PraktikumController extends Controller
             'route' => 'praktikum.materi',
             'param' =>  $matakuliah->slug
         ]]);
-        return view('aslab.materi', compact('matakuliah'));
-    }
-
-    public function kontrak(Matakuliah $matakuliah)
-    {
         $praktikum = $matakuliah->praktikum;
         return view('aslab.kontrak', compact('matakuliah', 'praktikum'));
     }

@@ -5,7 +5,11 @@
 @endsection
 
 @section('menu')
-<x-menu-dosen></x-menu-dosen>
+    @if (Auth::guard('dosen')->check())
+        <x-menu-dosen></x-menu-dosen>
+    @else
+        <x-menu-aslab></x-menu-aslab>
+    @endif
 @endsection
 
 @section('content')
@@ -20,8 +24,10 @@
     <div class="d-flex justify-content-between mt-3">
         <div class="text-white">
             <a href="{{ route('matakuliah.materi.download', ['matakuliah' => session('slug_matakuliah'), 'slug' => $materi->slug]) }}" class="btn btn-success">download</a>
-            <a class="btn btn-warning" data-toggle="modal" data-target="#modal-materi">edit</a>
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">delete</a>
+            @auth('dosen')    
+                <a class="btn btn-warning" data-toggle="modal" data-target="#modal-materi">edit</a>
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">delete</a>
+            @endauth
         </div>
         <div class="text-secondary float-right">
             Diupload {{ $materi->created_at->format('d M, Y') }}
