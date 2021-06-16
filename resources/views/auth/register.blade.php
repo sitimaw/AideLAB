@@ -103,6 +103,18 @@
                                     name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        
+                        <div class="form-group row">
+                            <label for="select2" class="col-md-4 col-form-label text-md-right">{{ __('Praktikum') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="select2" class="select2" name="praktikum[]" multiple="multiple" style="width: 100%">
+                                    @foreach ($matakuliah as $mk)
+                                    <option value="{{ $mk->id }}">{{ $mk->nama . ' ' . $mk->kelas }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -117,4 +129,12 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('#select2').select2();
+    });
+</script>
 @endsection
