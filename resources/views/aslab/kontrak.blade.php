@@ -61,6 +61,10 @@
             </div>
         </div>
 
+        <x-modal-persen praktikum="{{ $praktikum->id }}" absen="{{ $praktikum->persentaseNilai->absen }}"
+            tugas="{{ $praktikum->persentaseNilai->tugas }}" uts="{{ $praktikum->persentaseNilai->uts }}"
+            uas="{{ $praktikum->persentaseNilai->uas }}"></x-modal-persen>
+
     </div>
 </div>
 @endsection

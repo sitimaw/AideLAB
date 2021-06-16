@@ -72,6 +72,32 @@ class PraktikumController extends Controller
         return back();
     }
 
+    public function persen(Request $request)
+    {
+        $praktikum = Praktikum::find($request->id_praktikum);
+        $validated = $request->validate([
+            'absen' => 'min:0|max:100',
+            'tugas' => 'min:0|max:100',
+            'uts' => 'min:0|max:100',
+            'uas' => 'min:0|max:100',
+        ]);
+
+        $total = $validated['absen'] + $validated['tugas'] + $validated['uts'] + $validated['uas'];
+
+        if ( $total != 100 && $total != 0) {
+            session()->flash('danger', "Persentase nilai gagal disimpan!");
+        } else {
+            $praktikum->persentaseNilai->absen = $validated['absen'];
+            $praktikum->persentaseNilai->tugas = $validated['tugas'];
+            $praktikum->persentaseNilai->uts = $validated['uts'];
+            $praktikum->persentaseNilai->uas = $validated['uas'];
+            $praktikum->persentaseNilai->save();
+            session()->flash('success', "Persentase nilai berhasil disimpan!");
+        }
+
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

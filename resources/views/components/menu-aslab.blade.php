@@ -8,11 +8,11 @@
             Materi<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item active px-2 py-2">
-        <a class="nav-link" href="{{ route('praktikum.nilai', session('slug_matakuliah')) }}">
+        <a class="nav-link" href="#">
             Nilai<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item active px-2 py-2">
-        <a class="nav-link" href="{{ route('praktikum.jadwal', session('slug_matakuliah')) }}">
+        <a class="nav-link" href="#">
             Jadwal<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item active px-2 py-2">
