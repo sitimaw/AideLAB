@@ -47,6 +47,19 @@
     cursor: pointer;
 }
 
+.card-horizontal {
+    background-color: #E4D7D0 !important;
+    border-width: thick;
+    border-radius: 25px;
+    border-color: #0A4158 !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card-horizontal:hover {
+    transform: translate(35px) scale(1.1);
+    cursor: pointer;
+}
+
 .modal-aidelab {
     background-color: #E4D7D0 !important;
     border-width: thick;
@@ -81,4 +94,10 @@
   
 .separator:not(:empty)::after {
     margin-left: .25em;
+}
+
+.text-aidelab {
+    color: #0A4158;
+    font-size: larger;
+    font-weight: bold;
 }

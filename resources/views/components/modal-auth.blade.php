@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content modal-aidelab p-3">
                 <div class="d-flex justify-content-center py-5">
-                    <a class="btn btn-lg btn-secondary" data-dismiss="modal">Lihat Profil</a>
+                    <a class="btn btn-lg btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modal-profil">Lihat Profil</a>
                 </div>
                 <div class="separator"> Atau </div>
                 <div class="d-flex justify-content-center py-5">

@@ -18,30 +18,21 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    <h5 class="display-5">Daftar Matakuliah</h5>
-                    <ul class="list-group">
-                        @foreach (Auth::guard('dosen')->user()->matakuliah as $mk)
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+            @foreach (Auth::guard('dosen')->user()->matakuliah as $mk)
+                <div class="card card-horizontal my-3"
+                    onclick="location.href='{{ route('matakuliah.aslab', $mk->slug) }}'">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h4>
                             {{ $mk->nama . ' ' . $mk->kelas }}
-                            <a href="{{ route('matakuliah.aslab', $mk->slug) }}"
-                                class="badge badge-primary badge-pill">Buka</a>
-                        </li>
-                        @endforeach
-                    </ul>
+                        </h4>
+                        <h4>
+                            {{ $mk->kd_mk }}
+                        </h4>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
