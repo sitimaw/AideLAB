@@ -23,10 +23,10 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if ($guard == "dosen" && Auth::guard($guard)->check()) {
-                return redirect('/dosen');
+                return redirect('dosen/matakuliah');
             }
             if ($guard == "aslab" && Auth::guard($guard)->check()) {
-                return redirect('/aslab');
+                return redirect('aslab/praktikum');
             }
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
