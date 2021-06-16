@@ -37,6 +37,15 @@ class PraktikumController extends Controller
         return view('aslab.kontrak', compact('matakuliah', 'praktikum'));
     }
 
+    public function aturan(Request $request)
+    {
+        $praktikum = Praktikum::find($request->id_praktikum);
+        $praktikum->aturan = $request->aturan;
+        $praktikum->save();
+
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

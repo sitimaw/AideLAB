@@ -27,6 +27,7 @@
                     </div>
                 </div>
             </div>
+            <x-modal-aturan praktikum="{{ $praktikum->id }}" aturan="{{ $praktikum->aturan }}"></x-modal-aturan>
 
             <div class="col-md-4">
                 <div class="card mb-4 card-kontrak border-primary" data-toggle="modal" data-target="#modal-kontrak">
