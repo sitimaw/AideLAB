@@ -16,12 +16,18 @@ class MatakuliahController extends Controller
     public function index()
     {
         session()->forget('slug_matakuliah');
+        session()->forget('bc3');
         return view('dosen.matakuliah');
     }
 
     public function showAslab(Matakuliah $matakuliah)
     {
         session(['slug_matakuliah' => $matakuliah->slug]);
+        session(['bc3' => [
+            'nama' => "$matakuliah->nama $matakuliah->kelas",
+            'route' => 'matakuliah.aslab',
+            'param' =>  $matakuliah->slug
+        ]]);
         return view('dosen.showAslab', compact('matakuliah'));
     }
     

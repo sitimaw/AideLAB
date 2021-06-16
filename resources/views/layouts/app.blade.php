@@ -26,6 +26,7 @@
     <div id="app">
         <x-navbar></x-navbar>
         <main class="py-4">
+            @yield('breadcrumb')
             @yield('content')
         </main>
     </div>

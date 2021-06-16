@@ -10,7 +10,7 @@ class Jadwal extends Model
     use HasFactory;
 
     protected $table = 'jadwal';
-    protected $fillable = ['hari', 'jam', 'ruang', 'terisi'];
+    protected $fillable = ['hari', 'jam_mulai', 'jam_akhir', 'ruang', 'terisi'];
     public $timestamps = false;
 
     public function praktikum()
