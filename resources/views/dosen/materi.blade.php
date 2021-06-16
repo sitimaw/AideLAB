@@ -5,7 +5,11 @@
 @endsection
 
 @section('menu')
-<x-menu-dosen></x-menu-dosen>
+    @if (Auth::guard('dosen')->check())
+        <x-menu-dosen></x-menu-dosen>
+    @else
+        <x-menu-aslab></x-menu-aslab>
+    @endif
 @endsection
 
 @section('breadcrumb')
@@ -62,14 +66,16 @@
             </div>
         </div>
         @endforeach
-        <div class="col-md-3">
-            <div class="card mb-4 card-materi border-primary" data-toggle="modal" data-target="#modal-materi">
-                <div class="card-body">
-                    <img src="{{ asset("img/add-2.png") }}" width="100%" alt="add file">
-                    <h5 class="card-title text-center">Tambah Materi</h5>
+        @auth('dosen')    
+            <div class="col-md-3">
+                <div class="card mb-4 card-materi border-primary" data-toggle="modal" data-target="#modal-materi">
+                    <div class="card-body">
+                        <img src="{{ asset("img/add-2.png") }}" width="100%" alt="add file">
+                        <h5 class="card-title text-center">Tambah Materi</h5>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endauth
     </div>
     <x-modal-materi praktikum="{{ $matakuliah->praktikum->id }}" header="Tambah Materi" tombol="Simpan" link="matakuliah.materi.store" param="session('slug_matakuliah')"></x-modal-materi>
 </div>
