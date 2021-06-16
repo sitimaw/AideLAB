@@ -11,6 +11,7 @@ class PersentaseNilai extends Model
 
     protected $table = 'persentase_nilai';
     protected $fillable = ['id_praktikum', 'absen', 'tugas', 'uts', 'uas'];
+    public $timestamps = false;
 
     public function praktikum()
     {

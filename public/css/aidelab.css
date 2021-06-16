@@ -2,11 +2,23 @@
     background-color: #0A4158;
 }
 
+.menu-aidelab li>a {
+    color: white !important;
+}
+
 .menu-aidelab li:hover {
     background-color: #E4D7D0;
 }
 
 .menu-aidelab li:hover>a {
+    color: #0A4158 !important;
+}
+
+.menu-aidelab .active {
+    background-color: #E4D7D0;
+}
+
+.menu-aidelab .active>a {
     color: #0A4158 !important;
 }
 
@@ -100,4 +112,13 @@
     color: #0A4158;
     font-size: larger;
     font-weight: bold;
+}
+
+table {
+    display: block;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
 }

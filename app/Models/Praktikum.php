@@ -9,7 +9,7 @@ class Praktikum extends Model
 {
     use HasFactory;
 
-    protected $table = 'Praktikum';
+    protected $table = 'praktikum';
     protected $fillable = ['id_mk', 'id_jadwal', 'aturan'];
     public $timestamps = false;
 

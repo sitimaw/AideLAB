@@ -16,10 +16,10 @@ class CreatePersentaseNilaiTable extends Migration
         Schema::create('persentase_nilai', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_praktikum')->constrained('praktikum');
-            $table->integer('absen');
-            $table->integer('tugas');
-            $table->integer('uts');
-            $table->integer('uas');
+            $table->integer('absen')->nullable();
+            $table->integer('tugas')->nullable();
+            $table->integer('uts')->nullable();
+            $table->integer('uas')->nullable();
         });
     }
 
