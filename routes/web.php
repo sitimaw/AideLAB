@@ -32,6 +32,7 @@ Route::prefix('aslab')->middleware(['auth:aslab'])->group(function(){
     Route::get('/{matakuliah:slug}', 'PraktikumController@materi')->name('praktikum.materi');
     Route::get('/{matakuliah:slug}/kontrak', 'PraktikumController@kontrak')->name('praktikum.kontrak');
     Route::post('/{matakuliah:slug}/aturan', 'PraktikumController@aturan')->name('praktikum.aturan');
+    Route::post('/{matakuliah:slug}/jadwal', 'PraktikumController@jadwal')->name('praktikum.jadwal');
     Route::get('/{matakuliah:slug}/nilai', 'PraktikumController@nilai')->name('praktikum.nilai');
     Route::get('/{matakuliah:slug}/jadwal', 'PraktikumController@jadwal')->name('praktikum.jadwal');
 });

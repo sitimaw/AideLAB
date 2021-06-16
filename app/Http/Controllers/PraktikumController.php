@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jadwal;
 use App\Models\Matakuliah;
 use App\Models\Praktikum;
 use Illuminate\Http\Request;
@@ -42,6 +43,36 @@ class PraktikumController extends Controller
         $praktikum = Praktikum::find($request->id_praktikum);
         $praktikum->aturan = $request->aturan;
         $praktikum->save();
+        session()->flash('success', "Aturan berhasil disimpan!");
+
+        return back();
+    }
+
+    public function jadwal(Request $request)
+    {
+        $praktikum = Praktikum::find($request->id_praktikum);
+        $jadwal = Jadwal::where([
+            ['hari', $request->hari],
+            ['ruang', $request->ruang],
+            ['jam_mulai', explode("|",$request->jam)[0]],
+            ['jam_akhir', explode("|",$request->jam)[1]],
+        ])->first();
+
+        if ($jadwal->status == 1) {
+            session()->flash('danger', "Jadwal gagal disimpan!");
+        } else {
+            $praktikum->jadwal->status = 0;
+            $praktikum->jadwal->save();
+            
+            $praktikum->id_jadwal = $jadwal->id;
+            $praktikum->save();
+            $praktikum = Praktikum::find($request->id_praktikum);
+            
+            // dd($praktikum->jadwal->id);
+            $praktikum->jadwal->status = 1;
+            $praktikum->jadwal->save();
+            session()->flash('success', "Jadwal berhasil disimpan!");
+        }
 
         return back();
     }
