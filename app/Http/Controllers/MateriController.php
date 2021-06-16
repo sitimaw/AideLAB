@@ -17,6 +17,7 @@ class MateriController extends Controller
      */
     public function index(Matakuliah $matakuliah)
     {
+        session(['menu' => 'materi']);
         $materi = $matakuliah->praktikum->materi;
         return view('dosen.materi', compact('matakuliah', 'materi'));
     }

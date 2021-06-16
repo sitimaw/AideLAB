@@ -29,6 +29,7 @@ class PraktikumController extends Controller
             'route' => 'praktikum.materi',
             'param' =>  $matakuliah->slug
         ]]);
+        session(['menu' => 'kontrak']);
         $praktikum = $matakuliah->praktikum;
         return view('aslab.kontrak', compact('matakuliah', 'praktikum'));
     }

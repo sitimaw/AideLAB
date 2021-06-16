@@ -2,11 +2,23 @@
     background-color: #0A4158;
 }
 
+.menu-aidelab li>a {
+    color: white !important;
+}
+
 .menu-aidelab li:hover {
     background-color: #E4D7D0;
 }
 
 .menu-aidelab li:hover>a {
+    color: #0A4158 !important;
+}
+
+.menu-aidelab .active {
+    background-color: #E4D7D0;
+}
+
+.menu-aidelab .active>a {
     color: #0A4158 !important;
 }
 
