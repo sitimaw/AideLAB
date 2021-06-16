@@ -29,7 +29,6 @@ Route::middleware(['guest:aslab', 'guest:dosen'])->group(function () {
 
 Route::prefix('aslab')->middleware(['auth:aslab'])->group(function(){
     Route::get('/praktikum', 'PraktikumController@index')->name('aslab.praktikum');
-    Route::get('/{matakuliah:slug}', 'PraktikumController@materi')->name('praktikum.materi');
     Route::get('/{matakuliah:slug}/kontrak', 'PraktikumController@kontrak')->name('praktikum.kontrak');
     Route::post('/{matakuliah:slug}/aturan', 'PraktikumController@aturan')->name('praktikum.aturan');
     Route::get('/{matakuliah:slug}/nilai', 'PraktikumController@nilai')->name('praktikum.nilai');
@@ -41,10 +40,15 @@ Route::prefix('dosen')->middleware(['auth:dosen'])->group(function(){
     Route::patch('/matakuliah/aslab', 'MatakuliahController@setStatusAslab')->name('matakuliah.statusAslab');
     Route::get('/{matakuliah:slug}', 'MatakuliahController@showAslab')->name('matakuliah.aslab');
     Route::get('/{matakuliah:slug}/aslab', 'MatakuliahController@showAslabTerpilih')->name('matakuliah.aslabTerpilih');
-    Route::get('/{matakuliah:slug}/materi', 'MateriController@index')->name('matakuliah.materi');
-    Route::post('/{matakuliah:slug}/materi', 'MateriController@store')->name('matakuliah.materi.store');
+});
+
+Route::prefix('materi')->middleware(['auth:dosen,aslab'])->group(function(){
+    Route::get('/{matakuliah:slug}', 'MateriController@index')->name('matakuliah.materi');
     Route::get('/{matakuliah:slug}/download/{slug}', 'MateriController@download')->name('matakuliah.materi.download');
     Route::get('/{matakuliah:slug}/{slug}', 'MateriController@show')->name('matakuliah.materi.detail');
-    Route::patch('/{matakuliah:slug}/{slug}', 'MateriController@update')->name('matakuliah.materi.update');
-    Route::delete('/{matakuliah:slug}/{slug}', 'MateriController@destroy')->name('matakuliah.materi.delete');
+    Route::middleware(['auth:dosen'])->group(function(){
+        Route::post('/{matakuliah:slug}', 'MateriController@store')->name('matakuliah.materi.store');
+        Route::patch('/{matakuliah:slug}/{slug}', 'MateriController@update')->name('matakuliah.materi.update');
+        Route::delete('/{matakuliah:slug}/{slug}', 'MateriController@destroy')->name('matakuliah.materi.delete');
+    });
 });

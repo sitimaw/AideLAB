@@ -35,7 +35,7 @@
                         @foreach (Auth::guard('aslab')->user()->praktikum as $p)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{ $p->matakuliah->nama . ' ' . $p->matakuliah->kelas }}
-                            <a href="{{ route('praktikum.materi', $p->matakuliah->slug) }}"
+                            <a href="{{ route('praktikum.kontrak', $p->matakuliah->slug) }}"
                                 class="badge badge-primary badge-pill">Buka</a>
                         </li>
                         @endforeach
