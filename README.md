@@ -26,6 +26,9 @@ AideLAB adalah website yang menyediakan informasi mengenai jadwal dibukanya pend
     <li>Jangan lupa require laravel ui<br>
         <pre><code>$ composer require laravel/ui</code></pre>
     </li>
+    <li>Atur storage agar menjadi public<br>
+        <pre><code>$ php artisan storage:link</code></pre>
+    </li>
     <li>Terakhir jalankan servernya<br>
         <pre><code>$ php artisan serve</code></pre>
     </li>
@@ -36,4 +39,4 @@ AideLAB adalah website yang menyediakan informasi mengenai jadwal dibukanya pend
 2. Sulthan Zaidan Fauzi <a>https://www.linkedin.com/in/sulthanzaidanfauzi/</a>
 
 ## Copyright
-<b>&copy; Copyright AideLAB (Juny 8th, 2021)</b>
+<b>&copy; Copyright AideLAB (Juny 17th, 2021)</b>
