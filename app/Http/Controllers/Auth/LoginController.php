@@ -58,6 +58,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('dosen')->attempt(['nip' => $request->nip, 'password' => $request->password])) {
+            session(['bc1' => 'AideLAB']);
+            session( ['bc2' => ['nama' => 'Matakuliah', 
+                                    'route' => 'dosen.matakuliah']
+                    ]);
 
             return redirect()->intended('dosen/matakuliah');
         }
@@ -72,6 +76,11 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('aslab')->attempt(['npm' => $request->npm, 'password' => $request->password])) {
+            session(['bc1' => 'AideLAB']);
+            session( ['bc2' => ['nama' => 'Praktikum', 
+                                    'route' => 'aslab.praktikum']
+                    ]);
+
             return redirect()->intended('aslab/praktikum');
         }
         return back()->with('gagal', "NPM atau password yang Anda masukkan salah!")->withInput($request->only('npm'));

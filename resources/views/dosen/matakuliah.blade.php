@@ -12,6 +12,10 @@
 </ul>
 @endsection
 
+@section('breadcrumb')
+<x-breadcrumb></x-breadcrumb>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
