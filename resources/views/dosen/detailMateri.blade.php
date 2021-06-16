@@ -26,7 +26,7 @@
             <a href="{{ route('matakuliah.materi.download', ['matakuliah' => session('slug_matakuliah'), 'slug' => $materi->slug]) }}" class="btn btn-success">download</a>
             @auth('dosen')    
                 <a class="btn btn-warning" data-toggle="modal" data-target="#modal-materi">edit</a>
-                <a class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">delete</a>
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">hapus</a>
             @endauth
         </div>
         <div class="text-secondary float-right">
@@ -90,6 +90,6 @@
             </div>
     @endswitch
     <x-modal-materi praktikum="{{ $matakuliah->praktikum->id }}" header="Edit Materi" tombol="Ubah" link="matakuliah.materi.update" :param="['matakuliah' => session('slug_matakuliah'), 'slug' => $materi->slug]" :judul="$materi->judul" edit="true"></x-modal-materi>    
-    <x-modal-confirm pesan="Apakah anda yakin ingin menghapus materi ini?" delete="true" :slug="$materi->slug"></x-modal-materi>    
+    <x-modal-confirm pesan="Apakah anda yakin ingin menghapus materi ini?" status="delete" :slug="$materi->slug"></x-modal-materi>    
 </div>
 @endsection
