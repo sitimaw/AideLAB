@@ -13,7 +13,8 @@
     <div class="row">
         @foreach ($materi as $m)
             <div class="col-md-3">
-                <div class="card mb-4 card-materi border-primary" onclick="location.href='{{ route('matakuliah.materi.detail', ['matakuliah' => session('slug_matakuliah'), 'materi' => $m->id]) }}'">
+                <div class="card mb-4 card-materi border-primary" 
+                     onclick="location.href='{{ route('matakuliah.materi.detail', ['matakuliah' => session('slug_matakuliah'), 'slug' => $m->slug]) }}'">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
                         @switch($m->extension_file)
