@@ -59,7 +59,7 @@ class LoginController extends Controller
 
         if (Auth::guard('dosen')->attempt(['nip' => $request->nip, 'password' => $request->password])) {
 
-            return redirect()->intended('/dosen');
+            return redirect()->intended('dosen/matakuliah');
         }
         return back()->with('gagal', "NIP atau password yang Anda masukkan salah!")->withInput($request->only('nip'));
     }
@@ -72,7 +72,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('aslab')->attempt(['npm' => $request->npm, 'password' => $request->password])) {
-            return redirect()->intended('/aslab');
+            return redirect()->intended('aslab/praktikum');
         }
         return back()->with('gagal', "NPM atau password yang Anda masukkan salah!")->withInput($request->only('npm'));
     }

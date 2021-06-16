@@ -27,7 +27,11 @@ Route::middleware(['guest:aslab', 'guest:dosen'])->group(function () {
     Route::post('/register', 'Auth\RegisterController@create')->name('register.create');
 });
 
-Route::middleware(['auth:dosen'])->group(function(){
+Route::prefix('aslab')->middleware(['auth:aslab'])->group(function(){
+    Route::get('/praktikum', 'PraktikumController@index')->name('aslab.praktikum');
+});
+
+Route::prefix('dosen')->middleware(['auth:dosen'])->group(function(){
     Route::get('/matakuliah', 'MatakuliahController@index')->name('dosen.matakuliah');
     Route::patch('/matakuliah/aslab', 'MatakuliahController@setStatusAslab')->name('matakuliah.statusAslab');
     Route::get('/{matakuliah:slug}', 'MatakuliahController@showAslab')->name('matakuliah.aslab');
@@ -35,8 +39,4 @@ Route::middleware(['auth:dosen'])->group(function(){
     Route::get('/{matakuliah:slug}/materi', 'MateriController@index')->name('matakuliah.materi');
     Route::get('/{matakuliah:slug}/{materi}', 'MateriController@show')->name('matakuliah.materi.detail');
     Route::post('/{matakuliah:slug}/materi', 'MateriController@store')->name('matakuliah.materi.store');
-});
-
-Route::middleware(['auth:aslab'])->group(function(){
-    Route::get('/aslab', 'PraktikumController@index')->name('aslab.praktikum');
 });
