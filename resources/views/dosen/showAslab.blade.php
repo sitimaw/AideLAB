@@ -5,7 +5,7 @@
 @endsection
 
 @section('menu')
-<x-menu-dosen></x-menu-dosen>
+<x-menu-dosen ></x-menu-dosen>
 @endsection
 
 @section('content')
@@ -43,10 +43,6 @@
                         </li>
                         @endforeach
                     </ul>
-                </div>
-
-                <div class="card-footer">
-                    <button onclick="#" type="button" class="btn btn-primary">Kembali</button>
                 </div>
             </div>
         </div>
