@@ -11,23 +11,25 @@ AideLAB adalah website yang menyediakan informasi mengenai jadwal dibukanya pend
         ps: simpan di dalam folder htdocs
     </li>
     <li>Masuk ke dalam folder menggunakan cmd</li>
-    <li>Jalankan composer install di cmd atau terminal</li>
-    <li>Copy manual file .env</li>
+    <li>Jalankan composer install di cmd atau terminal
+        <pre><code>$ composer install</code></pre>
+    </li>
     <li>Jalankan key generate<br>
         <pre><code>$ php artisan key:generate</code></pre>
     </li>
+    <li>Copy manual file .env</li>
     <li>Buat database baru dengan nama 'aidelab'<br>
         <pre><code>$ mysql -u root</code></pre>
         <pre><code>$ create database aidelab</code></pre>
-    </li>
-    <li>Jalankan migration dan seed-nya<br>
-        <pre><code>$ php artisan migrate --seed</code></pre>
     </li>
     <li>Jangan lupa require laravel ui<br>
         <pre><code>$ composer require laravel/ui</code></pre>
     </li>
     <li>Atur storage agar menjadi public<br>
         <pre><code>$ php artisan storage:link</code></pre>
+    </li>
+    <li>Jalankan migration dan seed-nya<br>
+        <pre><code>$ php artisan migrate --seed</code></pre>
     </li>
     <li>Terakhir jalankan servernya<br>
         <pre><code>$ php artisan serve</code></pre>
